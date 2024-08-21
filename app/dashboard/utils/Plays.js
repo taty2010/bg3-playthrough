@@ -1,17 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { useAuth } from "@clerk/nextjs";
+import { useAuth, useUser } from "@clerk/nextjs";
 import Card from "../components/card";
 import Form from "../components/Form";
+import Modal from "../../dashboard/components/modal";
 
 export default function Plays({ data, subClass, playData }) {
   const { userId } = useAuth();
+  const { user } = useUser();
+
   const [plays, setPlays] = useState(playData?.data);
   const [edit, setEdit] = useState({
     open: false,
     id: null,
   });
+  const [openForm, setOpenForm] = useState(false);
 
   const allNames = [];
   const originNames = [];
@@ -26,16 +30,17 @@ export default function Plays({ data, subClass, playData }) {
     allNames.push(d.name);
   });
 
+  const icons = ["astarion", "gale", "karlach", "wyll", "shadowheart"];
+
+  const randomNum = (max) => {
+    return Math.floor(Math.random() * max);
+  };
+
   return (
     <>
-      <Form
-        data={data}
-        playData={playData}
-        subClass={subClass}
-        setPlays={setPlays}
-        edit={edit}
-        setEdit={setEdit}
-      />
+      <header>
+        <h1>{user?.username}'s Playthroughs</h1>
+      </header>
       <Card
         plays={plays}
         formData={data}
@@ -46,6 +51,23 @@ export default function Plays({ data, subClass, playData }) {
         playData={playData}
         subClass={subClass}
       />
+      <div className="addCard_wrapper">
+        <div className="addCard" onClick={() => setOpenForm(!openForm)}>
+          <span>+</span>
+        </div>
+        {openForm ? (
+          <Modal edit={openForm} setEdit={setOpenForm}>
+            <Form
+              data={data}
+              playData={playData}
+              subClass={subClass}
+              setPlays={setPlays}
+              edit={openForm}
+              setEdit={setOpenForm}
+            />
+          </Modal>
+        ) : null}
+      </div>
     </>
   );
 }

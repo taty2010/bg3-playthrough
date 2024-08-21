@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className={inter.className}>
           <Nav />
-          <main>{children}</main>
+          {children}
         </body>
       </html>
     </ClerkProvider>

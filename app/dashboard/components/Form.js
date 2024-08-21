@@ -37,6 +37,7 @@ export default function Form({
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setEdit(!edit);
     const data = await addPlays({ userId, event });
     setPlays(data);
   }

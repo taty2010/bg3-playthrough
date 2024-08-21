@@ -11,7 +11,7 @@ main {
   align-items: center;
   justify-content: center;
   flex-flow: column;
-  margin-top: 5%;
+  /* margin-top: 5%; */
 }
 
 main .cl-rootBox::before {
@@ -42,31 +42,23 @@ main .cl-rootBox::after {
   left: 23%;
 }
 
-.main {
-  height: 40vh;
-  width: 95%;
-  font-family: "Sedan SC", serif;
-  background: #252e387a;
-  background-image: url("/party.png"), url("/static.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-blend-mode: lighten;
-  margin: 0 auto;
-}
-
 body {
   height: 95%;
   margin: 0;
-  background: #eeeeee;
-  /* background: #444866; */
+  background: #21141f;
+  background-image: url("/smoke.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: color-burn;
+  background-attachment: fixed;
 }
 
 nav {
   width: 100%;
   height: 60px;
   text-align: right;
-  background: white;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -95,9 +87,9 @@ img {
 
 form.formDashboard {
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
-  background: white;
   padding: 3%;
   border-radius: 25px;
   width: auto;
@@ -117,4 +109,101 @@ form label {
 
 h3 {
   font-family: "Sedan SC", serif;
+  color: #fbcea0;
+  font-size: 1.5vw;
+  margin-bottom: 0;
+}
+
+.icons {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  max-width: 800px;
+  min-width: 750px;
+}
+
+.icons::before {
+  content: ".";
+  background: #15182b;
+  width: 400px;
+  height: 500px;
+  top: 30%;
+  position: absolute;
+  z-index: -999;
+  border-radius: 50% 50% 5% 5%;
+  box-shadow: -20px 13px 45px rgb(16 42 58 / 98%),
+    20px -10px 45px rgb(21 24 44 / 89%);
+  border: 1px solid #ffffff73;
+}
+
+.icons.home::after {
+  content: "Track your Baldur's Gate 3 Progress";
+  font: bolder 10vw "Alfa Slab One";
+  text-align: center;
+  margin: 0;
+  font-size: 2.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 23vw;
+  backdrop-filter: blur(5px);
+  border-radius: 42px;
+  color: white;
+  position: relative;
+  padding: 2%;
+  text-shadow: 0px 2px 5px #17192a;
+  top: -125px;
+}
+
+.icons img {
+  width: 100%;
+  height: 100%;
+}
+
+h1 {
+  font-family: "Sedan SC", serif;
+  color: #fbcea0;
+  font-size: 3.5vw;
+}
+
+.addCard {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  background: #161b3242;
+  background-image: url("/smoke.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 20px;
+  height: 5vh;
+  margin: 2% 1%;
+  max-width: 1110px;
+  box-shadow: -4px 6px 15px rgb(0 0 0 / 87%),
+    3px -3px 10px rgb(250 205 159 / 32%);
+  width: 15vw;
+  border-top: 0.5px solid #fbcea0;
+  border-right: 0.5px solid #fbcea0;
+  backdrop-filter: blur(7px);
+  cursor: pointer;
+  background-blend-mode: hue;
+}
+
+.addCard:hover {
+  background: #ffe3c875;
+}
+
+.addCard span {
+  font-size: 2vw;
+  color: #fbcea0;
+}
+
+.addCard_wrapper #modal {
+  top: 6%;
+  left: 35px;
+  width: 95%;
 }

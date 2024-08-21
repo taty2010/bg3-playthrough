@@ -8,10 +8,10 @@ export default async function Home() {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.icons}>
+    <main className={styles.wrapper}>
+      <div className="icons home">
         <img src={`../${icons[randomNum(5)]}.png`} />
       </div>
-    </div>
+    </main>
   );
 }

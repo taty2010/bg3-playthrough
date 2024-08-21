@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { createClerkSupabaseClient } from "../../utils/supabase/server";
 import Plays from "./utils/Plays";
-
+import styles from "./page.module.css";
 const client = await createClerkSupabaseClient();
 
 const getPlays = async () => {
@@ -27,8 +27,8 @@ export default async function Dashboard() {
   const test = await getPlays();
 
   return (
-    <>
+    <main id={styles.dashboard}>
       <Plays data={data} playData={test} userId={userId} subClass={subClass} />
-    </>
+    </main>
   );
 }

@@ -1,8 +1,18 @@
+#dashboard {
+  background-image: url("/karlach.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  justify-content: initial;
+}
+
 .main {
   display: flex;
   flex-flow: column;
   align-items: center;
   font-family: "Sedan SC", serif;
+  background-image: url("/astarion.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -34,14 +44,24 @@
   justify-content: center;
   position: relative;
   align-items: center;
-  background: #ffffff33;
-  border-radius: 25px;
-  height: 15vh;
+  background: #161b3242;
+  background-image: url("/smoke.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 20px;
+  height: 25vh;
   margin: 2% 1%;
   max-width: 1110px;
-  box-shadow: -6px 9px 20px rgb(219 88 88 / 16%),
-    4px -6px 20px rgb(109 159 187 / 53%);
+  box-shadow: -4px 6px 15px rgb(0 0 0 / 87%),
+    3px -3px 10px rgb(250 205 159 / 32%);
   width: 25vw;
+  border-top: 0.5px solid #fbcea0;
+  border-right: 0.5px solid #fbcea0;
+  backdrop-filter: blur(7px);
+  background-blend-mode: hue;
+  text-align: center;
+  color: wheat;
 }
 
 .modal {
@@ -53,7 +73,7 @@
   align-items: center;
   display: flex;
   z-index: 999;
-  top: -150%;
+  top: -35%;
 }
 
 .innerModal {
@@ -115,7 +135,7 @@
   flex-flow: column;
   justify-content: center;
   margin: 0;
-  display: none;
+  padding: 3% 0;
 }
 
 .card ul li {
@@ -181,19 +201,47 @@ img.heart {
   top: -65px;
 }
 
+.charIcons::after,
+.charIcons::before {
+  content: "";
+  background: rgb(0 0 0);
+  display: inline-block;
+  border-radius: 100%;
+  filter: blur(25px);
+  z-index: -9999;
+  position: absolute;
+  left: -2%;
+}
+
+.charIcons::before {
+  width: 250px;
+  height: 100px;
+  bottom: 17%;
+}
+
+.charIcons::after {
+  width: 169px;
+  height: 100px;
+  bottom: -25%;
+}
+
 .progress {
-  border-radius: 20px;
+  border-radius: 5px;
   padding: 2%;
   font-weight: bold;
   font-size: 0.8vw;
 }
 
 #inProgress {
-  background: #efe387;
+  border-top: 1px solid #efe387;
+  border-bottom: 1px solid #efe387;
+  color: #efe387;
 }
 
 #completed {
-  background: rgb(190, 231, 156);
+  border-top: 1px solid #bee79c;
+  border-bottom: 1px solid #bee79c;
+  color: #bee79c;
 }
 
 .edit {
@@ -206,9 +254,13 @@ img.heart {
 }
 
 .edit button {
-  border: none;
-  border-radius: 20px;
-  padding: 10px;
+  border-radius: 100%;
+  margin: 2% 5%;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
-  background: none;
+  background: #000000ed;
+  border: 0.5px solid #767171;
+  color: #fbcea0;
+  box-shadow: -2px 2px 7px rgb(0 0 0 / 78%);
 }
