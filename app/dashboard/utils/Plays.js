@@ -42,13 +42,12 @@ export default function Plays({ data, subClass, playData }) {
         <h1>{user?.username}'s Playthroughs</h1>
       </header>
       <Card
-        plays={plays}
+        plays={playData}
         formData={data}
         setPlays={setPlays}
         userId={userId}
         edit={edit}
         setEdit={setEdit}
-        playData={playData}
         subClass={subClass}
       />
       <div className="addCard_wrapper">
