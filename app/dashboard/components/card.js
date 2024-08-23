@@ -23,19 +23,21 @@ export default function Card({
       {plays?.map((play, i) => (
         <>
           <div className={styles.card} key={play.created_at}>
-            <div className={styles.edit}>
-              <button onClick={() => setEdit({ open: !edit.open, id: i })}>
-                ✐
-              </button>
-              <button onClick={() => handleDelete(play)}>X</button>
-            </div>
+            {userId ? (
+              <div className={styles.edit}>
+                <button onClick={() => setEdit({ open: !edit?.open, id: i })}>
+                  ✐
+                </button>
+                <button onClick={() => handleDelete(play)}>X</button>
+              </div>
+            ) : null}
             <>
               <div className={styles.charIcons}>
                 <img
                   src={`/${play.name.replace("'", "")}.png`}
                   alt={play.name}
                 />
-                {play.romance && play.romance !== "no" && (
+                {play.romance && play.romance !== "No" && (
                   <>
                     <img
                       className={styles.heart}
@@ -79,7 +81,7 @@ export default function Card({
               )}
             </>
           </div>
-          {edit.open && edit.id === i ? (
+          {edit?.open && edit?.id === i ? (
             <Modal edit={edit} setEdit={setEdit}>
               <Form
                 data={formData}

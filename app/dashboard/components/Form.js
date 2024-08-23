@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { addPlays, editPlays } from "../utils/supabaseRequest";
-import { useAuth } from "@clerk/nextjs";
+import { useAuth, useUser } from "@clerk/nextjs";
 import { Dropdown, Input } from "../components/dropdown";
 
 export default function Form({
@@ -15,6 +15,9 @@ export default function Form({
   setEdit,
 }) {
   const { userId } = useAuth();
+  const { user } = useUser();
+  const userName = user?.username;
+
   const [name, setName] = useState(play?.name || "Astarion");
 
   const allNames = [];
@@ -38,7 +41,7 @@ export default function Form({
   async function handleSubmit(event) {
     event.preventDefault();
     setEdit(!edit);
-    const data = await addPlays({ userId, event });
+    const data = await addPlays({ userId, event, userName });
     setPlays(data);
   }
 

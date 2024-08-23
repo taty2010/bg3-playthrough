@@ -27,7 +27,7 @@ export default async function Dashboard() {
   const test = await getPlays();
 
   return (
-    <main id={styles.dashboard}>
+    <main id={styles.dashboard} className="main_dashboard">
       <Plays data={data} playData={test} userId={userId} subClass={subClass} />
     </main>
   );

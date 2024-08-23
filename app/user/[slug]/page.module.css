@@ -1,0 +1,7 @@
+#dashboard {
+  background-image: url("/karlach.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  justify-content: initial;
+}

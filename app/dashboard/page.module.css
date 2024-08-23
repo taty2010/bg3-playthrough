@@ -3,7 +3,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 100%;
   justify-content: initial;
 }
 
@@ -25,6 +24,8 @@
   margin-top: 2%;
   width: 95%;
   position: relative;
+  min-height: 75vh;
+  height: 100%;
 }
 
 .cardWrapper form {
@@ -44,24 +45,29 @@
   justify-content: center;
   position: relative;
   align-items: center;
-  background: #161b3242;
+  background: #0000006b;
   background-image: url("/smoke.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 20px;
-  height: 25vh;
+  height: 45vh;
   margin: 2% 1%;
-  max-width: 1110px;
+  max-width: 350px;
   box-shadow: -4px 6px 15px rgb(0 0 0 / 87%),
     3px -3px 10px rgb(250 205 159 / 32%);
-  width: 25vw;
+  width: 22vw;
   border-top: 0.5px solid #fbcea0;
   border-right: 0.5px solid #fbcea0;
   backdrop-filter: blur(7px);
   background-blend-mode: hue;
   text-align: center;
   color: wheat;
+}
+
+.card:hover {
+  backdrop-filter: blur(22px);
+  background-blend-mode: hard-light;
 }
 
 .modal {
