@@ -34,7 +34,7 @@ export default function Card({
             <>
               <div className={styles.charIcons}>
                 <img
-                  src={`/${play.name.replace("'", "")}.png`}
+                  src={`/${play.name.replace("'", "").toLowerCase()}.png`}
                   alt={play.name}
                 />
                 {play.romance && play.romance !== "No" && (
@@ -45,7 +45,9 @@ export default function Card({
                       alt="heart"
                     />
                     <img
-                      src={`/${play.romance.replace("'", "")}.png`}
+                      src={`/${play.romance
+                        .replace("'", "")
+                        .toLowerCase()}.png`}
                       alt={play.name}
                     />
                   </>
