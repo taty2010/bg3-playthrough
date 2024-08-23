@@ -2,7 +2,7 @@ import { getSupabase } from "../../../utils/supabase/client";
 
 const client = getSupabase();
 
-const getFormValues = (event) => {
+const getFormValues = (event, userName) => {
   const target = event.target;
   return {
     char_type: "origin",
@@ -13,11 +13,12 @@ const getFormValues = (event) => {
     subclass: target[3].value,
     in_progress: target[6].value,
     background: target[4].value,
+    user_name: userName,
   };
 };
 
-export const addPlays = async ({ userId, event }) => {
-  const values = getFormValues(event);
+export const addPlays = async ({ userId, event, userName }) => {
+  const values = getFormValues(event, userName);
 
   const { error } = await client.from("plays").insert({
     ...values,

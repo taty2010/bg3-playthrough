@@ -46,11 +46,11 @@ body {
   height: 95%;
   margin: 0;
   background: #21141f;
-  background-image: url("/smoke.png");
+  background-image: url("/static.png"), url("/smoke.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-blend-mode: color-burn;
+  background-blend-mode: hard-light;
   background-attachment: fixed;
 }
 
@@ -166,6 +166,24 @@ h1 {
   font-family: "Sedan SC", serif;
   color: #fbcea0;
   font-size: 3.5vw;
+  background-image: url("/brush.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1:before {
+  content: "";
+  width: 100%;
+  height: 500px;
+  background: rgb(230 108 52 / 78%);
+  bottom: 92%;
+  display: inline-block;
+  border-radius: 100%;
+  filter: blur(100px);
+  z-index: -9999;
+  left: 0%;
+  position: absolute;
 }
 
 .addCard {
@@ -200,6 +218,10 @@ h1 {
 .addCard span {
   font-size: 2vw;
   color: #fbcea0;
+}
+
+.addCard_wrapper {
+  margin-bottom: 2%;
 }
 
 .addCard_wrapper #modal {
