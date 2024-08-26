@@ -11,6 +11,8 @@ export default function Card({
   edit,
   setEdit,
   subClass,
+  expandCard,
+  setExpandCard,
 }) {
   const handleDelete = async (play) => {
     const id = play.id;
@@ -22,15 +24,12 @@ export default function Card({
     <div className={styles.cardWrapper}>
       {plays?.map((play, i) => (
         <>
-          <div className={styles.card} key={play.created_at}>
-            {userId ? (
-              <div className={styles.edit}>
-                <button onClick={() => setEdit({ open: !edit?.open, id: i })}>
-                  ✐
-                </button>
-                <button onClick={() => handleDelete(play)}>X</button>
-              </div>
-            ) : null}
+          <div
+            className={`${styles.card} ${
+              expandCard.expand && expandCard.id === i ? styles.expand : ""
+            }`}
+            key={play.created_at}
+          >
             <>
               <div className={styles.charIcons}>
                 <img
@@ -71,6 +70,17 @@ export default function Card({
                   <span>Subclass: </span>
                   {play.subclass}
                 </li>
+                {expandCard.expand && expandCard.id === i ? (
+                  <>
+                    <li>
+                      <span>Background:</span> {play.background}
+                    </li>
+                    <li>
+                      <span>Run Notes:</span>
+                      {play.notes}
+                    </li>
+                  </>
+                ) : null}
               </ul>
               {play.in_progress ? (
                 <i className={styles.progress} id={styles.inProgress}>
@@ -82,6 +92,21 @@ export default function Card({
                 </i>
               )}
             </>
+            {userId ? (
+              <div className={styles.edit}>
+                <button onClick={() => setEdit({ open: !edit?.open, id: i })}>
+                  ✐
+                </button>
+                <button
+                  onClick={() =>
+                    setExpandCard({ expand: !expandCard.expand, id: i })
+                  }
+                  title="View More"
+                >
+                  {expandCard.expand && expandCard.id === i ? "x" : "↔"}
+                </button>
+              </div>
+            ) : null}
           </div>
           {edit?.open && edit?.id === i ? (
             <Modal edit={edit} setEdit={setEdit}>
@@ -93,6 +118,12 @@ export default function Card({
                 setEdit={setEdit}
                 setPlays={setPlays}
               />
+              <button
+                className={styles.delete}
+                onClick={() => handleDelete(play)}
+              >
+                Delete Playthrough
+              </button>
             </Modal>
           ) : null}
         </>

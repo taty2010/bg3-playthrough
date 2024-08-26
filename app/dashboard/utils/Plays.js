@@ -10,12 +10,16 @@ export default function Plays({ data, subClass, playData }) {
   const { userId } = useAuth();
   const { user } = useUser();
 
-  const [plays, setPlays] = useState(playData?.data);
+  const [plays, setPlays] = useState(playData);
   const [edit, setEdit] = useState({
     open: false,
     id: null,
   });
   const [openForm, setOpenForm] = useState(false);
+  const [expandCard, setExpandCard] = useState({
+    expand: false,
+    id: null,
+  });
 
   const allNames = [];
   const originNames = [];
@@ -30,25 +34,40 @@ export default function Plays({ data, subClass, playData }) {
     allNames.push(d.name);
   });
 
-  const icons = ["astarion", "gale", "karlach", "wyll", "shadowheart"];
-
-  const randomNum = (max) => {
-    return Math.floor(Math.random() * max);
-  };
+  const completed = playData.filter((d) => !d.in_progress);
 
   return (
     <>
       <header>
+        {user?.imageUrl ? (
+          <img src={user?.imageUrl} alt="profile picture" />
+        ) : null}
         <h1>{user?.username}'s Playthroughs</h1>
+        <div className="stats">
+          <div>
+            <h2>{playData.length}</h2>
+            <span>Runs</span>
+          </div>
+          <div>
+            <h2>{completed.length}</h2>
+            <span>Completed</span>
+          </div>
+          <div>
+            <h2>{playData.length - completed.length}</h2>
+            <span>Ongoing</span>
+          </div>
+        </div>
       </header>
       <Card
-        plays={playData}
+        plays={plays}
         formData={data}
         setPlays={setPlays}
         userId={userId}
         edit={edit}
         setEdit={setEdit}
         subClass={subClass}
+        setExpandCard={setExpandCard}
+        expandCard={expandCard}
       />
       <div className="addCard_wrapper">
         <div className="addCard" onClick={() => setOpenForm(!openForm)}>

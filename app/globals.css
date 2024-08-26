@@ -14,6 +14,32 @@ main {
   /* margin-top: 5%; */
 }
 
+.main_dashboard::before {
+  content: "";
+  width: 500px;
+  height: 100%;
+  background: rgb(3 4 6 / 91%);
+  bottom: -5%;
+  display: inline-block;
+  position: fixed;
+  filter: blur(66px);
+  z-index: -9999;
+  left: 85%;
+}
+
+.main_dashboard::after {
+  content: "";
+  width: 500px;
+  height: 100%;
+  background: rgb(3 4 6 / 91%);
+  bottom: -5%;
+  display: inline-block;
+  position: fixed;
+  filter: blur(66px);
+  z-index: -9999;
+  right: 85%;
+}
+
 main .cl-rootBox::before {
   content: "";
   width: 500px;
@@ -87,12 +113,12 @@ img {
 
 form.formDashboard {
   display: flex;
-  flex-flow: column;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   padding: 3%;
   border-radius: 25px;
-  width: auto;
+  width: 70%;
   margin: 1%;
 }
 
@@ -104,7 +130,13 @@ form.formDashboard {
 }
 
 form label {
-  padding: 0 2%;
+  padding: 1.5%;
+  flex: 40%;
+}
+button {
+  font-family: "Sedan SC", serif;
+  font-size: 0.8vw;
+  cursor: pointer;
 }
 
 h3 {
@@ -112,6 +144,7 @@ h3 {
   color: #fbcea0;
   font-size: 1.5vw;
   margin-bottom: 0;
+  text-shadow: -5px 3px 2px black;
 }
 
 .icons {
@@ -166,10 +199,10 @@ h1 {
   font-family: "Sedan SC", serif;
   color: #fbcea0;
   font-size: 3.5vw;
-  background-image: url("/brush.png");
+  /* background-image: url("/brush.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
 
 h1:before {
@@ -184,6 +217,10 @@ h1:before {
   z-index: -9999;
   left: 0%;
   position: absolute;
+}
+
+h2 {
+  margin-bottom: 0;
 }
 
 .addCard {
@@ -228,4 +265,49 @@ h1:before {
   top: 6%;
   left: 35px;
   width: 95%;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70%;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 2%;
+}
+
+.stats span {
+  font-family: "Sedan SC", serif;
+  font-size: 1.2vw;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  color: wheat;
+  background-image: url("/brush.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 120vh;
+}
+
+header img {
+  border-radius: 100%;
+  box-shadow: -3px 3px 5px rgba(0, 0, 0), 5px -3px 5px rgb(208 184 146 / 30%);
+  border-top: 1px solid wheat;
+  width: 150px;
+}
+
+.submit {
+  width: 50%;
+  border-radius: 20px;
+  background: white;
+  color: #101820;
+  font-weight: bold;
+  padding: 1%;
+  cursor: pointer;
 }

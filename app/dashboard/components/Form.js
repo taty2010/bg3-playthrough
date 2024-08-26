@@ -76,8 +76,18 @@ export default function Form({
         mapValues={allNames.concat("No")}
         defaultValue={play?.romance}
       />
+      <label for="notes">Run Notes:</label>
+      <textarea
+        id="notes"
+        name="notes"
+        rows="5"
+        cols="33"
+        placeholder="Add important notes from your run"
+      ></textarea>
       <Dropdown label="In Progress" mapValues={["No", "Yes"]} />
-      <button type="submit">Submit</button>
+      <button className="submit" type="submit">
+        Submit
+      </button>
     </form>
   );
 }

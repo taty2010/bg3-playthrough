@@ -28,11 +28,11 @@
   height: 100%;
 }
 
-.cardWrapper form {
+/* .cardWrapper form {
   background: none;
   display: flex;
   flex-flow: column;
-}
+} */
 
 .inner_cardWrapper {
   margin: 1.5%;
@@ -56,7 +56,7 @@
   max-width: 350px;
   box-shadow: -4px 6px 15px rgb(0 0 0 / 87%),
     3px -3px 10px rgb(250 205 159 / 32%);
-  width: 22vw;
+  width: 19vw;
   border-top: 0.5px solid #fbcea0;
   border-right: 0.5px solid #fbcea0;
   backdrop-filter: blur(7px);
@@ -65,34 +65,61 @@
   color: wheat;
 }
 
+.card.expand {
+  width: 80vw;
+  height: 45vw;
+  position: fixed;
+  top: 18%;
+  z-index: 999;
+  max-width: 1000px;
+  background-blend-mode: hard-light;
+}
+
+.card.expand .more {
+  right: 45%;
+}
+
+.card.expand:hover {
+  backdrop-filter: blur(7px);
+  box-shadow: -4px 6px 15px rgb(0 0 0 / 87%),
+    3px -3px 10px rgb(250 205 159 / 32%);
+}
+
+.card.expand:hover .more {
+  color: white;
+  border-bottom: white;
+}
+
 .card:hover {
   backdrop-filter: blur(22px);
   background-blend-mode: hard-light;
+  box-shadow: -13px 19px 15px rgb(0 0 0), 4px -4px 10px rgb(250 205 159 / 32%);
 }
 
 .modal {
   background: #000000c2;
   width: 100%;
   height: 90vh;
-  position: absolute;
+  position: fixed;
   justify-content: center;
   align-items: center;
   display: flex;
   z-index: 999;
-  top: -35%;
+  top: 5%;
 }
 
 .innerModal {
-  background: white;
-  color: black;
+  background: #0f1218f5;
+  color: white;
+  font-family: "Sedan SC", serif;
   position: relative;
   width: 50vw;
   height: 50vh;
   border-radius: 20px;
   display: flex;
+  flex-flow: column;
   justify-content: center;
-  box-shadow: -6px 9px 20px rgb(219 88 88 / 16%),
-    4px -6px 20px rgb(109 159 187 / 53%);
+  align-items: center;
 }
 
 .innerModal .modalClose {
@@ -102,6 +129,17 @@
   background: none;
   border: none;
   cursor: pointer;
+  color: white;
+}
+
+.innerModal .delete {
+  width: 35%;
+  border: none;
+  background: #c94747;
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 1%;
 }
 
 .modal form {
@@ -147,6 +185,7 @@
 .card ul li {
   list-style: none;
   padding: 1%;
+  text-shadow: -5px 3px 2px black;
 }
 
 .list {
@@ -251,12 +290,28 @@ img.heart {
 }
 
 .edit {
+  display: none;
   position: absolute;
-  top: 11px;
+  bottom: 11px;
   right: 0;
   width: 100%;
+}
+
+.card:hover .edit {
   display: flex;
   justify-content: space-between;
+}
+
+.card:hover .more {
+  color: rgb(94, 41, 41);
+  border-bottom: 1px solid rgb(94, 41, 41);
+}
+
+.card button {
+  cursor: pointer;
+  background: none;
+  color: white;
+  border: none;
 }
 
 .edit button {
@@ -264,9 +319,17 @@ img.heart {
   margin: 2% 5%;
   width: 30px;
   height: 30px;
-  cursor: pointer;
-  background: #000000ed;
   border: 0.5px solid #767171;
-  color: #fbcea0;
+  background: #000000ed;
   box-shadow: -2px 2px 7px rgb(0 0 0 / 78%);
+  color: #fbcea0;
+}
+
+button.more {
+  font-weight: bold;
+  border-bottom: 1px solid white;
+  z-index: 999;
+  position: absolute;
+  bottom: 18px;
+  right: 36%;
 }

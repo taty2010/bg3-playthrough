@@ -1,7 +1,7 @@
 export function Dropdown({ label, mapValues, set, defaultValue }) {
   return (
-    <label>
-      {label}:
+    <>
+      <label>{label}:</label>
       <select
         name="romancedCharacter"
         onChange={(event) => {
@@ -16,14 +16,14 @@ export function Dropdown({ label, mapValues, set, defaultValue }) {
           </option>
         ))}
       </select>
-    </label>
+    </>
   );
 }
 
 export function Input({ label, value, disabled }) {
   return (
-    <label>
-      {label}:
+    <>
+      <label>{label}:</label>
       <input
         type="text"
         value={value}
@@ -31,6 +31,6 @@ export function Input({ label, value, disabled }) {
         name={label}
         disabled={disabled}
       />
-    </label>
+    </>
   );
 }

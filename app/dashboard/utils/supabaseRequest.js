@@ -11,8 +11,9 @@ const getFormValues = (event, userName) => {
     race: target[1].value,
     class: target[2].value,
     subclass: target[3].value,
-    in_progress: target[6].value,
+    in_progress: target[7].value,
     background: target[4].value,
+    notes: target[6].value,
     user_name: userName,
   };
 };
