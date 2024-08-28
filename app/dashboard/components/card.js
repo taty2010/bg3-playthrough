@@ -31,32 +31,22 @@ export default function Card({
             key={play.created_at}
           >
             <>
-              <div className={styles.charIcons}>
-                <img
-                  src={`/${play.name.replace("'", "").toLowerCase()}.png`}
-                  alt={play.name}
-                />
-                {play.romance && play.romance !== "No" && (
-                  <>
-                    <img
-                      className={styles.heart}
-                      src="/heart.png"
-                      alt="heart"
-                    />
-                    <img
-                      src={`/${play.romance
-                        .replace("'", "")
-                        .toLowerCase()}.png`}
-                      alt={play.name}
-                    />
-                  </>
-                )}
-              </div>
+              {play.name !== "Tav" && (
+                <div className={styles.charIcons}>
+                  <img
+                    className={styles.charIcon}
+                    src={`/${play.name.replace("'", "").toLowerCase()}.png`}
+                    alt={play.name}
+                  />
+                </div>
+              )}
               <div className={styles.cardChar}>
                 {/* <span>{i + 1}</span> */}
-                {play.char_type === "origin" && (
-                  <h3> {play.name} Origin Run</h3>
-                )}
+
+                <h3>
+                  {" "}
+                  {play.name} {play.name !== "Tav" && "Origin"} Run
+                </h3>
               </div>
               <ul>
                 <li>
@@ -74,6 +64,9 @@ export default function Card({
                   <>
                     <li>
                       <span>Background:</span> {play.background}
+                    </li>
+                    <li>
+                      <span>Romance:</span> {play.romance}
                     </li>
                     <li>
                       <span>Run Notes:</span>

@@ -52,7 +52,7 @@
   background-position: center;
   border-radius: 20px;
   height: 45vh;
-  margin: 2% 1%;
+  margin: 4% 1%;
   max-width: 350px;
   box-shadow: -4px 6px 15px rgb(0 0 0 / 87%),
     3px -3px 10px rgb(250 205 159 / 32%);
@@ -120,6 +120,7 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  max-width: 800px;
 }
 
 .innerModal .modalClose {
@@ -236,6 +237,7 @@
 img.heart {
   height: 30px;
   width: 30px;
+  margin: 0 2%;
 }
 
 .charIcons {
@@ -243,7 +245,12 @@ img.heart {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: -65px;
+  top: -97px;
+}
+
+.charIcons img:not(.heart) {
+  border-radius: 100%;
+  width: 200px;
 }
 
 .charIcons::after,
@@ -261,13 +268,13 @@ img.heart {
 .charIcons::before {
   width: 250px;
   height: 100px;
-  bottom: 17%;
+  bottom: 42%;
 }
 
 .charIcons::after {
   width: 169px;
   height: 100px;
-  bottom: -25%;
+  bottom: -13%;
 }
 
 .progress {

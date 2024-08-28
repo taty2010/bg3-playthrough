@@ -10,11 +10,17 @@ export function Dropdown({ label, mapValues, set, defaultValue }) {
         defaultValue={defaultValue}
       >
         {/* <option value={value}>{value}</option> */}
-        {mapValues?.map((v) => (
-          <option key={v} value={v}>
-            {v}
-          </option>
-        ))}
+        {mapValues?.map((v) =>
+          v === defaultValue ? (
+            <option key={v} value={v} selected>
+              {v}
+            </option>
+          ) : (
+            <option key={v} value={v}>
+              {v}
+            </option>
+          )
+        )}
       </select>
     </>
   );

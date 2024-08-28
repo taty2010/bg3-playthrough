@@ -6,7 +6,7 @@ import Card from "../components/card";
 import Form from "../components/Form";
 import Modal from "../../dashboard/components/modal";
 
-export default function Plays({ data, subClass, playData }) {
+export default function Plays({ data, subClass, playData, races }) {
   const { userId } = useAuth();
   const { user } = useUser();
 
@@ -35,7 +35,6 @@ export default function Plays({ data, subClass, playData }) {
   });
 
   const completed = playData.filter((d) => !d.in_progress);
-
   return (
     <>
       <header>
@@ -82,6 +81,7 @@ export default function Plays({ data, subClass, playData }) {
               setPlays={setPlays}
               edit={openForm}
               setEdit={setOpenForm}
+              races={races}
             />
           </Modal>
         ) : null}

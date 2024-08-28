@@ -7,13 +7,14 @@ const getFormValues = (event, userName) => {
   return {
     char_type: "origin",
     name: target[0].value,
-    romance: target[5].value,
+    romance: target[6].value,
     race: target[1].value,
-    class: target[2].value,
-    subclass: target[3].value,
-    in_progress: target[7].value,
-    background: target[4].value,
-    notes: target[6].value,
+    subrace: target[2].value,
+    class: target[3].value,
+    subclass: target[4].value,
+    in_progress: target[8].value,
+    background: target[5].value,
+    notes: target[7].value,
     user_name: userName,
   };
 };

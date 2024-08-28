@@ -25,12 +25,29 @@ export default async function Dashboard() {
     return data;
   };
 
+  const getRaces = async () => {
+    const { data, error } = await client.from("races").select("*");
+
+    if (error) {
+      console.log(error);
+    }
+
+    return data;
+  };
+
   const subClass = await getSubClass();
   const test = await getPlays();
+  const races = await getRaces();
 
   return (
     <main id={styles.dashboard} className="main_dashboard">
-      <Plays data={data} playData={test} userId={userId} subClass={subClass} />
+      <Plays
+        data={data}
+        playData={test}
+        userId={userId}
+        subClass={subClass}
+        races={races}
+      />
     </main>
   );
 }
