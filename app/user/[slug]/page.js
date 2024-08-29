@@ -1,6 +1,6 @@
 import { createClerkSupabaseClient } from "../../../utils/supabase/server";
-import Card from "../../dashboard/components/card";
 import styles from "./page.module.css";
+import Plays from "@/app/dashboard/utils/Plays";
 
 export default async function Page({ params }) {
   const client = await createClerkSupabaseClient();
@@ -11,10 +11,7 @@ export default async function Page({ params }) {
 
   return (
     <main id={styles.dashboard} className="main_dashboard">
-      <header>
-        <h1>{params.slug}'s Playthroughs</h1>
-      </header>
-      <Card plays={data} />
+      <Plays playData={data} userProfile={params.slug} />
     </main>
   );
 }

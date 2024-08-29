@@ -15,7 +15,6 @@ const Nav = () => {
       <SignedOut>
         <div className="nav">
           <Link href="/login">Sign In</Link>
-          <Link href="/sign-up">Sign Up</Link>
         </div>
       </SignedOut>
     </nav>

@@ -65,6 +65,14 @@
   color: wheat;
 }
 
+.card section {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .card.expand {
   width: 80vw;
   height: 45vw;
@@ -72,7 +80,9 @@
   top: 18%;
   z-index: 999;
   max-width: 1000px;
+  max-height: 570px;
   background-blend-mode: hard-light;
+  flex-flow: row;
 }
 
 .card.expand .more {
@@ -83,6 +93,25 @@
   backdrop-filter: blur(7px);
   box-shadow: -4px 6px 15px rgb(0 0 0 / 87%),
     3px -3px 10px rgb(250 205 159 / 32%);
+}
+
+.card.expand .charIcons {
+  position: initial;
+  display: initial;
+  width: 50%;
+}
+
+.card.expand .charIcons img {
+  width: 100%;
+}
+
+.card.expand section {
+  display: flex;
+  width: 50%;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
 }
 
 .card.expand:hover .more {
@@ -114,7 +143,7 @@
   font-family: "Sedan SC", serif;
   position: relative;
   width: 50vw;
-  height: 50vh;
+  padding: 2%;
   border-radius: 20px;
   display: flex;
   flex-flow: column;
@@ -152,7 +181,7 @@
   flex-flow: row;
   align-items: center;
   padding: 0 1%;
-  width: 50%;
+  width: 100%;
 }
 
 .cardChar span,
@@ -253,28 +282,26 @@ img.heart {
   width: 200px;
 }
 
-.charIcons::after,
 .charIcons::before {
   content: "";
+  width: 250px;
+  height: 180px;
+  bottom: 7%;
   background: rgb(0 0 0);
   display: inline-block;
   border-radius: 100%;
-  filter: blur(25px);
+  filter: blur(21px);
   z-index: -9999;
   position: absolute;
+  left: -11%;
+}
+
+.card.expand .charIcons::before {
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 77%);
+  filter: blur(100px);
   left: -2%;
-}
-
-.charIcons::before {
-  width: 250px;
-  height: 100px;
-  bottom: 42%;
-}
-
-.charIcons::after {
-  width: 169px;
-  height: 100px;
-  bottom: -13%;
 }
 
 .progress {
@@ -282,6 +309,15 @@ img.heart {
   padding: 2%;
   font-weight: bold;
   font-size: 0.8vw;
+}
+
+.expand .progress {
+  font-weight: 800;
+  font-size: 1vw;
+}
+
+.expand h3 {
+  font-size: 2vw;
 }
 
 #inProgress {

@@ -6,7 +6,13 @@ import Card from "../components/card";
 import Form from "../components/Form";
 import Modal from "../../dashboard/components/modal";
 
-export default function Plays({ data, subClass, playData, races }) {
+export default function Plays({
+  data,
+  subClass,
+  playData,
+  races,
+  userProfile,
+}) {
   const { userId } = useAuth();
   const { user } = useUser();
 
@@ -41,7 +47,7 @@ export default function Plays({ data, subClass, playData, races }) {
         {user?.imageUrl ? (
           <img src={user?.imageUrl} alt="profile picture" />
         ) : null}
-        <h1>{user?.username}'s Playthroughs</h1>
+        <h1>{userProfile ? userProfile : user?.username}'s Runs</h1>
         <div className="stats">
           <div>
             <h2>{playData.length}</h2>
@@ -68,24 +74,26 @@ export default function Plays({ data, subClass, playData, races }) {
         setExpandCard={setExpandCard}
         expandCard={expandCard}
       />
-      <div className="addCard_wrapper">
-        <div className="addCard" onClick={() => setOpenForm(!openForm)}>
-          <span>+</span>
+      {userId && (
+        <div className="addCard_wrapper">
+          <div className="addCard" onClick={() => setOpenForm(!openForm)}>
+            <span>+</span>
+          </div>
+          {openForm && (
+            <Modal edit={openForm} setEdit={setOpenForm}>
+              <Form
+                data={data}
+                playData={playData}
+                subClass={subClass}
+                setPlays={setPlays}
+                edit={openForm}
+                setEdit={setOpenForm}
+                races={races}
+              />
+            </Modal>
+          )}
         </div>
-        {openForm ? (
-          <Modal edit={openForm} setEdit={setOpenForm}>
-            <Form
-              data={data}
-              playData={playData}
-              subClass={subClass}
-              setPlays={setPlays}
-              edit={openForm}
-              setEdit={setOpenForm}
-              races={races}
-            />
-          </Modal>
-        ) : null}
-      </div>
+      )}
     </>
   );
 }

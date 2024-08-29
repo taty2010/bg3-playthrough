@@ -40,10 +40,6 @@
   align-items: center;
 }
 
-.wrapper {
-  /* background-image: url("../public/static.png"); */
-}
-
 .wrapper::after {
   content: "";
   width: 300px;

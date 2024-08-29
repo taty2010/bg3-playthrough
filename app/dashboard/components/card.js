@@ -40,66 +40,68 @@ export default function Card({
                   />
                 </div>
               )}
-              <div className={styles.cardChar}>
-                {/* <span>{i + 1}</span> */}
+              <section className={styles.playInfo_wrapper}>
+                <div className={styles.cardChar}>
+                  {/* <span>{i + 1}</span> */}
 
-                <h3>
-                  {" "}
-                  {play.name} {play.name !== "Tav" && "Origin"} Run
-                </h3>
-              </div>
-              <ul>
-                <li>
-                  <span>Race: </span>
-                  {play.race}
-                </li>
-                <li>
-                  <span>Class: </span> {play.class}
-                </li>
-                <li>
-                  <span>Subclass: </span>
-                  {play.subclass}
-                </li>
-                {expandCard.expand && expandCard.id === i ? (
-                  <>
-                    <li>
-                      <span>Background:</span> {play.background}
-                    </li>
-                    <li>
-                      <span>Romance:</span> {play.romance}
-                    </li>
-                    <li>
-                      <span>Run Notes:</span>
-                      {play.notes}
-                    </li>
-                  </>
-                ) : null}
-              </ul>
-              {play.in_progress ? (
-                <i className={styles.progress} id={styles.inProgress}>
-                  In Progress
-                </i>
-              ) : (
-                <i className={styles.progress} id={styles.completed}>
-                  Completed
-                </i>
-              )}
+                  <h3>
+                    {" "}
+                    {play.name} {play.name !== "Tav" && "Origin"} Run
+                  </h3>
+                </div>
+                <ul>
+                  <li>
+                    <span>Race: </span>
+                    {play.race}
+                  </li>
+                  <li>
+                    <span>Class: </span> {play.class}
+                  </li>
+                  <li>
+                    <span>Subclass: </span>
+                    {play.subclass}
+                  </li>
+                  {expandCard.expand && expandCard.id === i ? (
+                    <>
+                      <li>
+                        <span>Background:</span> {play.background}
+                      </li>
+                      <li>
+                        <span>Romance:</span> {play.romance}
+                      </li>
+                      <li>
+                        <span>Run Notes:</span>
+                        {play.notes}
+                      </li>
+                    </>
+                  ) : null}
+                </ul>
+                {play.in_progress ? (
+                  <i className={styles.progress} id={styles.inProgress}>
+                    In Progress
+                  </i>
+                ) : (
+                  <i className={styles.progress} id={styles.completed}>
+                    Completed
+                  </i>
+                )}
+              </section>
             </>
-            {userId ? (
-              <div className={styles.edit}>
+            <div className={styles.edit}>
+              {userId && (
                 <button onClick={() => setEdit({ open: !edit?.open, id: i })}>
                   ✐
                 </button>
-                <button
-                  onClick={() =>
-                    setExpandCard({ expand: !expandCard.expand, id: i })
-                  }
-                  title="View More"
-                >
-                  {expandCard.expand && expandCard.id === i ? "x" : "↔"}
-                </button>
-              </div>
-            ) : null}
+              )}
+              <button
+                onClick={() =>
+                  setExpandCard({ expand: !expandCard.expand, id: i })
+                }
+                title="View More"
+              >
+                {expandCard.expand && expandCard.id === i ? "x" : "↔"}
+              </button>
+            </div>
           </div>
           {edit?.open && edit?.id === i ? (
             <Modal edit={edit} setEdit={setEdit}>

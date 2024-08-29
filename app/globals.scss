@@ -1,0 +1,302 @@
+@import url("https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap");
+$main-font: "Sedan SC", serif;
+$accent-color: #fbcea0;
+
+@mixin flex($flex-flow, $justify) {
+  display: flex;
+  justify-content: $justify;
+  align-items: center;
+  flex-flow: $flex-flow;
+}
+
+@mixin bgImage-base($size, $position, $attachment, $blend) {
+  background-position: $position;
+  background-repeat: no-repeat;
+  background-size: $size;
+  background-blend-mode: $blend;
+  background-attachment: $attachment;
+}
+
+@mixin blobs(
+  $height,
+  $bg,
+  $bottom,
+  $radius,
+  $blur,
+  $position,
+  $pos-property,
+  $pos-val
+) {
+  content: "";
+  width: 500px;
+  height: $height;
+  background: $bg;
+  bottom: $bottom;
+  display: inline-block;
+  position: $position;
+  filter: blur($blur);
+  z-index: -9999;
+  #{$pos-property}: $pos-val;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+h1,
+h3 {
+  font-family: $main-font;
+  color: $accent-color;
+}
+
+h1 {
+  font-size: 3.5vw;
+}
+
+h1:before {
+  content: "";
+  width: 100%;
+  height: 500px;
+  background: rgb(230 108 52 / 78%);
+  bottom: 92%;
+  display: inline-block;
+  border-radius: 100%;
+  filter: blur(100px);
+  z-index: -9999;
+  left: 0%;
+  position: absolute;
+}
+
+h2 {
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 1.5vw;
+  margin-bottom: 0;
+  text-shadow: -5px 3px 2px black;
+}
+
+main {
+  width: 100%;
+  @include flex(column, center);
+}
+
+.main_dashboard::before {
+  @include blobs(100%, rgb(3 4 6 / 91%), -5%, initial, 66px, fixed, left, 85%);
+}
+
+.main_dashboard::after {
+  @include blobs(100%, rgb(3 4 6 / 91%), -5%, initial, 66px, fixed, right, 85%);
+}
+
+body {
+  height: 95%;
+  margin: 0;
+  background: #21141f;
+  background-image: url("/static.png"), url("/smoke.png");
+  @include bgImage-base(cover, center, fixed, hard-light);
+}
+
+nav {
+  width: 100%;
+  height: 60px;
+  text-align: right;
+  color: white;
+  @include flex(initial, space-between);
+  a {
+    margin: 0 3%;
+  }
+}
+
+.nav {
+  padding: 1% 2%;
+  @include flex(initial, right);
+  width: 50vw;
+}
+
+header {
+  width: 100%;
+  @include flex(column, center);
+  color: wheat;
+  background-image: url("/brush.png");
+  @include bgImage-base(100% 120vh, center, initial, initial);
+
+  img {
+    border-radius: 100%;
+    box-shadow: -3px 3px 5px rgba(0, 0, 0), 5px -3px 5px rgb(208 184 146 / 30%);
+    border-top: 1px solid wheat;
+    width: 150px;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  width: 100px;
+}
+
+form.formDashboard {
+  @include flex(row wrap, center);
+  padding: 3%;
+  border-radius: 25px;
+  width: 70%;
+  margin: 1%;
+}
+
+form label {
+  padding: 1.5%;
+  flex: 40%;
+}
+
+button {
+  font-family: $main-font;
+  font-size: 0.8vw;
+  cursor: pointer;
+}
+
+.icons {
+  @include flex(column, center);
+  width: 50vw;
+  max-width: 800px;
+  min-width: 750px;
+}
+
+.icons::before {
+  content: ".";
+  background: #15182b;
+  width: 400px;
+  height: 500px;
+  top: 30%;
+  position: absolute;
+  z-index: -999;
+  border-radius: 50% 50% 5% 5%;
+  box-shadow: -20px 13px 45px rgb(16 42 58 / 98%),
+    20px -10px 45px rgb(21 24 44 / 89%);
+  border: 1px solid #ffffff73;
+}
+
+.icons.home::after {
+  content: "Track your Baldur's Gate 3 Progress";
+  font: bolder 10vw "Alfa Slab One";
+  @include flex(initial, center);
+  text-align: center;
+  margin: 0;
+  font-size: 2.5vw;
+  width: 23vw;
+  backdrop-filter: blur(5px);
+  border-radius: 42px;
+  color: white;
+  position: relative;
+  padding: 2%;
+  text-shadow: 0px 2px 5px #17192a;
+  top: -125px;
+}
+
+.icons img {
+  width: 100%;
+  height: 100%;
+}
+
+.addCard {
+  @include flex(column, center);
+  position: relative;
+  background: #161b3242;
+  background-image: url("/smoke.png");
+  @include bgImage-base(cover, center, initial, hue);
+  border-radius: 20px;
+  height: 5vh;
+  margin: 2% 1%;
+  max-width: 1110px;
+  box-shadow: -4px 6px 15px rgb(0 0 0 / 87%),
+    3px -3px 10px rgb(250 205 159 / 32%);
+  width: 15vw;
+  border-top: 0.5px solid $accent-color;
+  border-right: 0.5px solid $accent-color;
+  backdrop-filter: blur(7px);
+  cursor: pointer;
+
+  &:hover {
+    background: #ffe3c875;
+  }
+
+  span {
+    font-size: 2vw;
+    color: $accent-color;
+  }
+}
+
+.addCard_wrapper {
+  margin-bottom: 2%;
+
+  #modal {
+    top: 6%;
+    left: 35px;
+    width: 95%;
+  }
+}
+
+.stats {
+  @include flex(initial, space-evenly);
+  width: 70%;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 2%;
+
+  span {
+    font-family: $main-font;
+    font-size: 1.2vw;
+  }
+}
+
+.submit {
+  width: 50%;
+  border-radius: 20px;
+  background: white;
+  color: #101820;
+  font-weight: bold;
+  padding: 1%;
+  cursor: pointer;
+}
+
+// Clerk Styling
+
+main .cl-rootBox::before {
+  @include blobs(
+    500px,
+    rgb(230 70 52 / 78%),
+    36%,
+    100%,
+    100px,
+    absolute,
+    left,
+    40%
+  );
+}
+
+main .cl-rootBox::after {
+  @include blobs(
+    500px,
+    rgb(230 121 52 / 76%),
+    17%,
+    100%,
+    100px,
+    absolute,
+    left,
+    23%
+  );
+}
+
+.cl-logoBox {
+  height: 150px;
+}
+
+.cl-socialButtonsBlockButtonText,
+.cl-dividerText,
+.cl-cardBox .cl-headerSubtitle {
+  color: white;
+}
